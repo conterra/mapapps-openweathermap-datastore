@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define({
-    service: {
-        streets: "Stra\u00DFen",
-        topo: "Topographie"
-    }
-});
+define([
+    ".",
+    "./OpenWeatherMapStoreFactory",
+    "./OWMInfoWidgetFactory",
+    "./OWMInfoWidget"
+], {});

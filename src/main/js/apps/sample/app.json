@@ -1,7 +1,13 @@
 {
+    "properties": {
+        "title": "OpenWeatherMap Datastore Sample"
+    },
     "load": {
-        "bundleLocations" : ["localbundles","bundles"],
-        "allowedBundles" : [
+        "bundleLocations": ["localbundles", "bundles"],
+        "styles": ["${app}:app.css"],
+        "allowedBundles": [
+            "console",
+            "wizard",
             "system",
             "splashscreen",
             "map",
@@ -12,64 +18,213 @@
             "toolset",
             "toolrules",
             "basemaptoggler",
-            "sample_helloworld"
-        ],
-        "skipBundles" : [],
-        "require" : ["${app}.app"],
-        "i18n": ["bundle"]
+            "dn_openweathermapdatastore",
+            "omnisearch",
+            "resultcenter",
+            "selection"
+        ]
     },
-    "bundles" : {
-        "map" : {
-            "MapState" : {
-                "initialExtent":{
-                    "xmin" : -1100000,
-                    "ymin" : 4000000,
-                    "xmax" : 3500000,
-                    "ymax" : 8800000,
-                    "spatialReference": {
-                        "wkid": 3857
-                    }
-                }
-            },
-            "MapModelFactory" : {
-                "_configData" : {
-                    "maps" :[
+    "bundles": {
+        "basemaptoggler": {
+            "enabled": true
+        },
+        "dn_openweathermapdatastore": {
+            "enabled": true
+        },
+        "map": {
+            "MapModelFactory": {
+                "_configData": {
+                    "maps": [
                         {
                             "id": "default",
-                            "glass_pane" : [],
-                            "operationalLayer" : [],
-                            "baseLayer" : [
+                            "glass_pane": [],
+                            "operationalLayer": [],
+                            "baseLayer": [
                                 {
-                                    "title": "${service.streets}",
-                                    "service": "streets",
-                                    "enabled" : true
+                                    "title": "Canvas Base",
+                                    "enabled": true,
+                                    "service": "service_43687"
                                 },
                                 {
-                                    "title": "${service.topo}",
+                                    "title": "Streets",
+                                    "service": "streets",
+                                    "enabled": true
+                                },
+                                {
+                                    "title": "Topo",
                                     "service": "worldTopo",
-                                    "enabled" : false
+                                    "enabled": false
                                 }
                             ]
                         }
                     ]
                 }
             },
-            "MappingResourceRegistryFactory" : {
-                "_knownServices" :{
+            "MapState": {
+                "initialExtent": {
+                    "xmin": -5735217.854766758,
+                    "xmax": 8353655.198753184,
+                    "ymin": 2937438.935885074,
+                    "ymax": 10529776.081393043,
+                    "wkid": 3857
+                }
+            },
+            "MapWidgetFactory": {
+                "esriMapOpts": {
+                    "slider": true,
+                    "nav": false,
+                    "logo": true,
+                    "sliderStyle": "large",
+                    "doubleClickZoom": true,
+                    "clickRecenter": true,
+                    "pan": true,
+                    "rubberBandZoom": true,
+                    "keyboardNavigation": true,
+                    "scrollWheelZoom": true,
+                    "sliderPosition": "top-right",
+                    "displayGraphicsOnPan": true,
+                    "navigationMode": "css-transforms",
+                    "fadeOnZoom": true,
+                    "showAttribution": true,
+                    "sliderOrientation": "vertical",
+                    "sliderLabels": [
+                        ""
+                    ]
+                }
+            },
+            "MappingResourceRegistryFactory": {
+                "_knownServices": {
                     "services": [
                         {
-                            "id":"worldTopo",
-                            "type":"AGS_TILED",
-                            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+                            "id": "service_43687",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer",
+                            "type": "AGS_TILED",
+                            "title": "Canvas Base",
+                            "description": "This map draws attention to your thematic content by providing a neutral background with minimal colors, labels, and features. Only key information is represented to provide geographic context, allowing your data to come to the foreground. This light gray map supports any strong colors, creating a visually compelling map graphic which helps your reader see the patterns intended. This map was developed by Esri using HERE data, DeLorme basemap layers, OpenStreetMap contributors, Esri basemap data, and select data from the GIS user community. Worldwide coverage is provided from Level 0 (1:591M scale) through Level 13 (1:72k scale). In North America (Canada, Mexico, United States), Europe, India, South America and Central America, Africa, most of the Middle east, and Australia & New Zealand coverage is provided from Level 14 (1:36k scale) through Level 16 (1:9k scale). For more information on this map, including our terms of use, visit us online at http://goto.arcgisonline.com/maps/World_Light_Gray_Base",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": "Light Gray Canvas Base",
+                                    "enabled": true
+                                }
+                            ],
+                            "options": {}
                         },
                         {
-                            "id":"streets",
-                            "type":"AGS_TILED",
-                            "url":"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+                            "id": "worldTopo",
+                            "type": "AGS_TILED",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer",
+                            "title": "World Topographic Map",
+                            "description": "This map is designed to be used as a basemap by GIS professionals and as a reference map by anyone. The map includes administrative boundaries, cities, water features, physiographic features, parks, landmarks, highways, roads, railways, and airports overlaid on land cover and shaded relief imagery for added context. The map provides coverage for the world down to a scale of ~1:72k. Coverage is provided down to ~1:4k for the following areas: Australia and New Zealand; India; Europe; Canada; Mexico; the continental United States and Hawaii; South America and Central America; Africa; and most of the Middle East. Coverage down to ~1:1k and ~1:2k is available in select urban areas. This basemap was compiled from a variety of best available sources from several data providers, including the U.S. Geological Survey (USGS), U.S. Environmental Protection Agency (EPA), U.S. National Park Service (NPS), Food and Agriculture Organization of the United Nations (FAO), Department of Natural Resources Canada (NRCAN), GeoBase, Agriculture and Agri-Food Canada, DeLorme, HERE, Esri, OpenStreetMap contributors, and the GIS User Community. For more information on this map, including our terms of use, visit us online at http://goto.arcgisonline.com/maps/World_Topo_Map",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": "Citations",
+                                    "enabled": false
+                                }
+                            ],
+                            "options": {}
+                        },
+                        {
+                            "id": "streets",
+                            "type": "AGS_TILED",
+                            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer",
+                            "title": "World Street Map",
+                            "description": "This worldwide street map presents highway-level data for the world. Street-level data includes the United States; much of Canada; Mexico; Europe; Japan; Australia and New Zealand; India; South America and Central America; Africa; and most of the Middle East. This comprehensive street map includes highways, major roads, minor roads, one-way arrow indicators, railways, water features, administrative boundaries, cities, parks, and landmarks, overlaid on shaded relief imagery for added context. The map also includes building footprints for selected areas. Coverage is provided down to ~1:4k with ~1:1k and ~1:2k data available in select urban areas. The street map was developed by Esri using Esri basemap data, DeLorme basemap layers, U.S. Geological Survey (USGS) elevation data, Intact Forest Landscape (IFL) data for the world; HERE data for Europe, Australia and New Zealand, North America, South America and Central America, Africa, and most of the Middle East; OpenStreetMap contributors for select countries in Africa; MapmyIndia data in India; and select data from the GIS user community. For more information on this map, including the terms of use, visit us online at http://goto.arcgisonline.com/maps/World_Street_Map",
+                            "layers": [
+                                {
+                                    "id": "0",
+                                    "title": "World Street Map",
+                                    "enabled": true
+                                }
+                            ],
+                            "options": {}
                         }
                     ]
                 }
-            }
+            },
+            "enabled": true
+        },
+        "omnisearch": {
+            "OmniSearchFactory": {
+                "displayLoadingIcon": true,
+                "comboBoxOpts": {
+                    "ignoreCase": true,
+                    "autoComplete": true,
+                    "selectFirstResultOnEnter": false,
+                    "autoSelect": false
+                }
+            },
+            "enabled": true
+        },
+        "resultcenter": {
+            "SearchStoreTool": [
+                {
+                    "id": "allOWMItems",
+                    "title": "OpenWeatherMap Data",
+                    "storeId": "owm_datastore",
+                    "iconClass": "icon-cog"
+                }
+            ],
+            "enabled": true
+        },
+        "selection": {
+            "SelectionTool": [
+                {
+                    "id": "selectOWMItems",
+                    "storeId": "owm_datastore",
+                    "title": "Select OpenWeatherMap Data",
+                    "iconClass": "selectionIconExtent"
+                }
+            ],
+            "enabled": true
+        },
+        "splashscreen": {
+            "enabled": true
+        },
+        "templatelayout": {
+            "enabled": true
+        },
+        "templates": {
+            "enabled": true
+        },
+        "themes": {
+            "enabled": true
+        },
+        "toolrules": {
+            "enabled": true
+        },
+        "toolset": {
+            "ToolsetManager": {
+                "toolsets": [
+                    {
+                        "id": "toolset_1443094201794",
+                        "title": "Tools",
+                        "container": "map",
+                        "windowType": "fixed",
+                        "window": {
+                            "closable": false
+                        },
+                        "cssClass": "notitle",
+                        "__isDirty": true,
+                        "position": {
+                            "rel_l": 20,
+                            "rel_t": 80
+                        },
+                        "tools": [
+                            "allOWMItems",
+                            "selectOWMItems"
+                        ]
+                    }
+                ]
+            },
+            "enabled": true
+        },
+        "windowmanager": {
+            "enabled": true
+        },
+        "wizard": {
+            "enabled": true
         }
     }
 }

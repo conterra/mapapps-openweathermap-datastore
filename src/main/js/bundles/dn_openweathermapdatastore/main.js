@@ -13,13 +13,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define([
-    "dojo/_base/declare"
-], function(declare) {
-
-    return declare([], {
-        print: function() {
-            alert(this._properties.message);
-        }
-    });
-});
+define(["dojo/i18n!./nls/bundle"], {});

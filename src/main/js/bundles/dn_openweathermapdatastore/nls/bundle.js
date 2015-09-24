@@ -14,7 +14,17 @@
  * limitations under the License.
  */
 define({
-    bundleName: "Hallo Welt",
-    bundleDescription: "Das Modul gibt Hallo aus.",
-    hello: "Hallo Welt"
+    root:
+            {
+                bundleName: "",
+                bundleDescription: "",
+                description: "",
+                widget: {
+                    now: "Now",
+                    fiveDays: "5 Days",
+                    sixteenDays: "16 Days",
+                    conditions: "Conditions in "
+                }
+            },
+    de: true
 });

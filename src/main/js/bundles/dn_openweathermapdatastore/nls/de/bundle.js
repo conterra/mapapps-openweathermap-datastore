@@ -13,8 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-define([
-    ".",
-    "./Hello",
-    "ct/tools/Tool"
-], {});
+define({
+    bundleName: "",
+    bundleDescription: "",
+    description: "",
+    widget: {
+        now: "Aktuell",
+        fiveDays: "5 Tage",
+        sixteenDays: "16 Tage",
+        conditions: "Wetterbedingungen in "
+    }
+});
