@@ -6,8 +6,6 @@
         "bundleLocations": ["localbundles", "bundles"],
         "styles": ["${app}:app.css"],
         "allowedBundles": [
-            "console",
-            "wizard",
             "system",
             "splashscreen",
             "map",
