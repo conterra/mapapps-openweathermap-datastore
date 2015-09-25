@@ -1,1 +1,1 @@
-# mapapps-openweathermap-datastore
+# OpenWeatherMap Datastore
