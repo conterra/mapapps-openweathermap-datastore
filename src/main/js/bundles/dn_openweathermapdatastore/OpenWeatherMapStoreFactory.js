@@ -41,12 +41,13 @@ define([
             var properties = this._properties || {};
             // check mandatory parameters
             ct_lang.hasProp(properties, "url", true);
+            ct_lang.hasProp(properties, "mapZoom", true);
             var params = {};
             params.units = "metric";
             params.cluster = "no";
-            //default:
-            //params.bbox = "-180.0,90.0,180.0,-90.0,5";
-            params.bbox = "-180.0,90.0,180.0,-90.0,5";
+            //default: "-180.0,90.0,180.0,-90.0,5"
+            var bbox = "-180.0,90.0,180.0,-90.0," + properties.mapZoom;
+            params.bbox = bbox;
             if (properties.apikey) {
                 params.APPID = properties.apikey;
             }

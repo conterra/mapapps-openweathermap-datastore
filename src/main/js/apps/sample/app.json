@@ -27,6 +27,9 @@
             "enabled": true
         },
         "dn_openweathermapdatastore": {
+            "OpenWeatherMapStoreFactory": {
+                "mapZoom": 6
+            },
             "enabled": true
         },
         "map": {

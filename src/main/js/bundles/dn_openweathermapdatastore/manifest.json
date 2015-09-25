@@ -55,6 +55,7 @@
                 "omniSearchLabelAttr": "name",
                 "omniSearchTypingDelay": 500,
                 "url": "http://api.openweathermap.org/data/2.5/box/city",
+                "mapZoom": 5,
                 "metadata": {
                     "title": "OpenWeatherMap DataStore",
                     "name": "title",
