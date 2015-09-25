@@ -13,6 +13,9 @@ The OpenWeatherMap Datastore bundle contains a store for OpenWeatherMap Data. It
 
 The bundle also contains a special content viewer with charts for 5 and 16 days forecast.
 
+### Sample App
+http://www.mapapps.de/mapapps/resources/apps/downloads_openweathermap/index.html
+
 Installation Guide
 ------------------
 
