@@ -18,3 +18,15 @@ Installation Guide
 
 1. Add the bundles "dn_openweathermapdatastore" and "c3" to your app.
 2. Now you can use the OpenWeatherMap Datastore in your app.
+
+Configuration:
+```
+"bundles" {
+  "dn_openweathermapdatastore": {
+    "OpenWeatherMapStoreFactory": {
+      "mapZoom": 5
+    }
+  },
+  ...
+```
+The mapZoom property must be a value between 1 and 8.
