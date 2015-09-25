@@ -28,5 +28,6 @@ Configuration:
     }
   },
   ...
+}
 ```
 The mapZoom property must be a value between 1 and 8.
