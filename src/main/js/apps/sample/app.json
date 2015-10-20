@@ -28,6 +28,7 @@
         },
         "dn_openweathermapdatastore": {
             "OpenWeatherMapStoreFactory": {
+                //"apikey": "*your api key*",
                 "mapZoom": 5
             },
             "enabled": true
