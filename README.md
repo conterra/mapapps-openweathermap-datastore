@@ -31,6 +31,9 @@ Configuration:
     "OpenWeatherMapStoreFactory": {
       "mapZoom": 5,
       "apikey": "*your api key*"
+    },
+    "OWMInfoWidgetFactory": {
+      "apikey": "*your api key*"
     }
   },
   ...
