@@ -29,7 +29,8 @@ define([
             var widget = new OWMInfoWidget({
                 i18n: i18n,
                 content: content,
-                context: context
+                context: context,
+                properties: this._properties
             });
             return widget;
         }
