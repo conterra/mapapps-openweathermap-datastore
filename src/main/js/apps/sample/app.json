@@ -155,7 +155,7 @@
                 "displayLoadingIcon": true,
                 "comboBoxOpts": {
                     "ignoreCase": true,
-                    "autoComplete": true,
+                    "autoComplete": false,
                     "selectFirstResultOnEnter": false,
                     "autoSelect": false
                 }
