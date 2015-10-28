@@ -53,7 +53,7 @@
                 "title": "OpenWeatherMap Search Store",
                 "description": "Datastore for OpenWeatherMap API",
                 "useIn": ["omnisearch", "selection"],
-                "omniSearchDefaultLabel": "Keyword",
+                "omniSearchDefaultLabel": "${keyword}",
                 "omniSearchSearchAttr": "name",
                 "omniSearchLabelAttr": "name",
                 "omniSearchTypingDelay": 500,

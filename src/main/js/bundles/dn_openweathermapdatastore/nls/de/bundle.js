@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 define({
-    bundleName: "",
-    bundleDescription: "",
-    description: "",
+    bundleName: "OpenWeatherMap Datastore",
+    bundleDescription: "Das Bundle ermöglicht den Zugriff auf die Wetterdaten der OpenWeatherMap API",
+    keyword: "Ort...",
     widget: {
         now: "Aktuell",
         fiveDays: "5 Tage",

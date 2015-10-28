@@ -16,9 +16,9 @@
 define({
     root:
             {
-                bundleName: "",
-                bundleDescription: "",
-                description: "",
+                bundleName: "OpenWeatherMap Datastore",
+                bundleDescription: "Bundle that contains a store for OpenWeatherMap data",
+                keyword: "City...",
                 widget: {
                     now: "Now",
                     fiveDays: "5 Days",
