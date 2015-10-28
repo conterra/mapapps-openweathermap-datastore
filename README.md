@@ -19,7 +19,7 @@ http://www.mapapps.de/mapapps/resources/apps/downloads_openweathermap/index.html
 Installation Guide
 ------------------
 
-1. Register a free openweathermap account or sign in to get your own api key: http://home.openweathermap.org/users/sign_in
+1. Register a free OpenWeatherMap account or sign in to get your own api key: http://home.openweathermap.org/users/sign_in
 2. Add the bundles "dn_openweathermapdatastore" and "c3" to your app.
 3. Add the api key to the configuration and add it to your app.json.
 4. Now you can use the OpenWeatherMap Datastore in your app.
