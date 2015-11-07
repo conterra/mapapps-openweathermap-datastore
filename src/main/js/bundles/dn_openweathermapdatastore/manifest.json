@@ -81,6 +81,7 @@
                         {
                             "title": "Weather-ID",
                             "name": "weather_id",
+                            "alias": "Weather-ID",
                             "type": "codedValue",
                             "domain": {
                                 "codedValues": [
