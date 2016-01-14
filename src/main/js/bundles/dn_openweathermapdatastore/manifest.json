@@ -5,7 +5,7 @@
     "Bundle-Description": "Datastore for OpenWeatherMap API",
     "Bundle-Vendor": "con terra GmbH",
     "Bundle-Category": ["mapping", "search"],
-    "Product-Name": "map.apps Developer Network",
+    "Product-Name": "con terra Developer Network",
     "Require-Bundle": [{
             "name": "contentviewer"
         }, {
