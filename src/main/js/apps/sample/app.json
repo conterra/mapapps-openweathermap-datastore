@@ -19,10 +19,18 @@
             "dn_openweathermapdatastore",
             "omnisearch",
             "resultcenter",
-            "selection"
+            "selection",
+            "banner"
         ]
     },
     "bundles": {
+        "banner": {
+            "BannerWidget": {
+                "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+                "imagePosition": "above",
+                "link": "http://conterra.de"
+            }
+        },
         "basemaptoggler": {
             "enabled": true
         },
