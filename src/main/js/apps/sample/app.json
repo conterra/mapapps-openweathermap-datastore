@@ -4,7 +4,6 @@
     },
     "load": {
         "bundleLocations": ["localbundles", "bundles"],
-        "styles": ["${app}:app.css"],
         "allowedBundles": [
             "system",
             "splashscreen",
