@@ -79,18 +79,17 @@ define([
             d_array.forEach(list, function (obj) {
                 var lat = obj.coord.lat;
                 var lon = obj.coord.lon;
-                var point = ct_geometry.createPoint({
+                var geometry = ct_geometry.createPoint({
                     x: lon,
                     y: lat,
                     wkid: 4326
                 });
-                var geometry = point;
                 var attr = {};
                 attr.id = obj.id;
                 attr.name = obj.name;
                 var time = obj.dt;
                 var date = new Date(time * 1000);
-                var date = attr.date = d_locale.format(date, "MMM d, yyyy");
+                date = attr.date = d_locale.format(date, "MMM d, yyyy");
                 attr.weather_id = obj.weather[0].id;
                 attr.main = obj.weather[0].main;
                 attr.description = obj.weather[0].description;
