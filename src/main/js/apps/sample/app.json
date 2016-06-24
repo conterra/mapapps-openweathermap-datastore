@@ -37,7 +37,7 @@
         "dn_openweathermapdatastore": {
             "OpenWeatherMapStoreFactory": {
                 "apikey": "*your api key*",
-                "mapZoom": 5
+                "mapZoom": 6
             },
             "OWMInfoWidgetFactory": {
                 "apikey": "*your api key*"
