@@ -25,6 +25,7 @@
     "bundles": {
         "banner": {
             "BannerWidget": {
+                "label": "Developer Network",
                 "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
                 "imagePosition": "above",
                 "link": "http://conterra.de"
@@ -35,11 +36,11 @@
         },
         "dn_openweathermapdatastore": {
             "OpenWeatherMapStoreFactory": {
-                "apikey": "*your api key*",
+                "apikey": "76dc198e95f85c4f3daa4f20434f7035",
                 "mapZoom": 6
             },
             "OWMInfoWidgetFactory": {
-                "apikey": "*your api key*"
+                "apikey": "76dc198e95f85c4f3daa4f20434f7035"
             },
             "enabled": true
         },
