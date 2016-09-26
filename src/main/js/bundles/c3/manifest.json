@@ -8,5 +8,5 @@
     "Bundle-Localization": [],
     "Bundle-ExcludedExecutionEnvironment": ["IE:[,9)"],
     "Product-Name": "map.apps",
-    "Product-Name": "con terra Developer Network"
+    "Product-Name": "devnet-mapapps-openweathermap-datastore"
 }
