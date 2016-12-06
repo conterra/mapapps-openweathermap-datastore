@@ -54,7 +54,7 @@ define([
             return ct_when(ct_request({
                 url: properties.url,
                 content: params,
-                timeout: properties.timeout || 10000,
+                timeout: properties.timeout || 60000,
                 jsonp: "callback"
             }), function (response) {
                 var list = response.list;
