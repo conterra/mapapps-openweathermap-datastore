@@ -37,11 +37,11 @@
         },
         "dn_openweathermapdatastore": {
             "OpenWeatherMapStoreFactory": {
-                "apikey": "76dc198e95f85c4f3daa4f20434f7035",
+                "apikey": "*your api key*",
                 "mapZoom": 6
             },
             "OWMInfoWidgetFactory": {
-                "apikey": "76dc198e95f85c4f3daa4f20434f7035"
+                "apikey": "*your api key*"
             },
             "enabled": true
         },
