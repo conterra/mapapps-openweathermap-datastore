@@ -483,7 +483,7 @@
         <connection>scm:git:https://github.com/conterra/mapapps-openweathermap-datastore.git</connection>
         <developerConnection>scm:git:https://github.com/conterra/mapapps-openweathermap-datastore.git</developerConnection>
         <url>https://github.com/conterra/mapapps-openweathermap-datastore</url>
-        <tag>1.0.5</tag>
+        <tag>HEAD</tag>
     </scm>
     <distributionManagement>
         <repository>
@@ -574,11 +574,13 @@
                                 </goals>                                
                                 <configuration>
                                     <tag>${project.version}</tag>
-                                    <artifact>${project.build.directory}/${project.artifactId}-bundle.zip</artifact>
+                                    <artifact>${project.build.directory}/${project.artifactId}-${project.version}.jar</artifact>
                                     <fileSets>
                                         <fileSet>
                                             <directory>${project.build.directory}</directory>
                                             <includes>
+                                                <include>${project.artifactId}-bundle.zip</include>
+                                                <include>${project.artifactId}-sample-app.zip</include>
                                                 <include>${project.artifactId}*.tar.gz</include>
                                                 <include>${project.artifactId}*.zip</include>
                                             </includes>
