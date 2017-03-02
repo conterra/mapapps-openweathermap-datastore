@@ -49,7 +49,7 @@ define([
             var bbox = "-180.0,90.0,180.0,-90.0," + properties.mapZoom;
             params.bbox = bbox;
             if (properties.apikey) {
-                params.APPID = properties.apikey;
+                params.appid = properties.apikey;
             }
             return ct_when(ct_request({
                 url: properties.url,
