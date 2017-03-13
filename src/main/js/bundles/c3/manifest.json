@@ -7,6 +7,5 @@
     "Bundle-DocURL": "http://c3js.org",
     "Bundle-Localization": [],
     "Bundle-ExcludedExecutionEnvironment": ["IE:[,9)"],
-    "Product-Name": "map.apps",
     "Product-Name": "devnet-mapapps-openweathermap-datastore"
 }

@@ -31,7 +31,7 @@ define([
     "contentviewer/GridContent",
     "ct/_when",
     "ct/_Connect",
-    "ct/request",
+    "apprt-request",
     "dojox/charting/Chart",
     "dojox/charting/themes/MiamiNice",
     "dojox/charting/plot2d/Areas",
@@ -62,7 +62,7 @@ define([
              GridContent,
              ct_when,
              _Connect,
-             ct_request,
+             apprt_request,
              Chart,
              theme,
              Areas,
@@ -428,14 +428,22 @@ define([
             });
         },
         _get5DayForecast: function () {
-            var id = this.content.id;
-            var apikey = this.properties.apikey;
-            var url = "http://api.openweathermap.org/data/2.5/forecast?units=metric&APPID=" + apikey + "&id=" + id;
+            var url = "http://api.openweathermap.org/data/2.5/forecast";
             var list;
-            return ct_when(ct_request({
-                url: url,
-                timeout: 10000
-            }), function (response) {
+            var params = {};
+            params.units = "metric";
+            params.id = this.content.id;
+            if (this.properties.apikey) {
+                params.APPID = this.properties.apikey;
+            }
+            return ct_when(apprt_request(
+                url,
+                {
+                    query: params,
+                    timeout: 60000,
+                    handleAs: "json"
+                }
+            ), function (response) {
                 list = response.list;
                 var data = [];
                 d_array.forEach(list, function (item) {
@@ -462,14 +470,22 @@ define([
             }, this);
         },
         _get16DayForecast: function () {
-            var id = this.content.id;
-            var apikey = this.properties.apikey;
-            var url = "http://api.openweathermap.org/data/2.5/forecast/daily?cnt=16&units=metric&APPID=" + apikey + "&id=" + id;
+            var url = "http://api.openweathermap.org/data/2.5/forecast/daily";
             var list;
-            return ct_when(ct_request({
-                url: url,
-                timeout: 10000
-            }), function (response) {
+            var params = {};
+            params.units = "metric";
+            params.cnt="16";
+            params.id = this.content.id;
+            if (this.properties.apikey) {
+                params.APPID = this.properties.apikey;
+            }
+            return ct_when(apprt_request(
+                url,
+                {
+                    query: params,
+                    timeout: 60000,
+                    handleAs: "json"
+                }), function (response) {
                 list = response.list;
                 var data = [];
                 d_array.forEach(list, function (item) {

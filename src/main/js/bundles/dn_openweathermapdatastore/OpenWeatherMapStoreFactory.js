@@ -17,22 +17,27 @@ define([
     "dojo/_base/lang",
     "dojo/_base/declare",
     "ct/mapping/geometry",
-    "esri/tasks/DistanceParameters",
     "dojo/_base/array",
-    "dojo/Deferred",
+    "dojo/DeferredList",
     "dojo/date/locale",
-    "ct/_lang", "ct/_when",
-    "ct/request",
-    "ct/store/StoreUtil",
-    "ct/store/ComplexQuery",
+    "ct/_lang",
+    "ct/_when",
+    "apprt-request",
     "ct/store/ComplexMemory",
-    "dojo/store/util/QueryResults",
     "esri/symbols/PictureMarkerSymbol",
     "esri/graphic"
-], function (d_lang, declare, ct_geometry, DistanceParameters, d_array, Deferred, d_locale, ct_lang, ct_when, ct_request, StoreUtil, ComplexQuery, ComplexMemory, QueryResults, PictureMarkerSymbol, Graphic) {
-    /*
-     * COPYRIGHT 2015 con terra GmbH Germany
-     */
+], function (d_lang,
+             declare,
+             ct_geometry,
+             d_array,
+             DeferredList,
+             d_locale,
+             ct_lang,
+             ct_when,
+             apprt_request,
+             ComplexMemory,
+             PictureMarkerSymbol,
+             Graphic) {
     /**
      * @fileOverview This file implements the dojo store interface to provide a search store for Open Weather Map search service.
      */
@@ -41,38 +46,69 @@ define([
             var properties = this._properties || {};
             // check mandatory parameters
             ct_lang.hasProp(properties, "url", true);
-            ct_lang.hasProp(properties, "mapZoom", true);
-            var params = {};
-            params.units = "metric";
-            params.cluster = "no";
-            //default: "-180.0,90.0,180.0,-90.0,5"
-            var bbox = "-180.0,90.0,180.0,-90.0," + properties.mapZoom;
-            params.bbox = bbox;
-            if (properties.apikey) {
-                params.appid = properties.apikey;
-            }
-            return ct_when(ct_request({
-                url: properties.url,
-                content: params,
-                timeout: properties.timeout || 10000,
-                jsonp: "callback"
-            }), function (response) {
-                var list = response.list;
-                return ct_when(this._transformItemsToGraphics(list), function (items) {
-                    this._cachingStore = new ComplexMemory({
-                        id: properties.id,
-                        idProperty: "id",
-                        data: items,
-                        metadata: properties.metadata
-                    });
-                }, this);
-            }, this);
+
+            // get data
+            return this._createStore();
         },
         createInstance: function () {
             return this._cachingStore;
         },
         destroyInstance: function () {
             this._cachingStore = null;
+        },
+        _createStore: function () {
+            var properties = this._properties || {};
+            var bboxes = properties.bboxes || [
+                    "-180,90,180,-90,5"
+                ];
+            var requests = d_array.map(bboxes, function (bbox) {
+                var params = {};
+                params.units = "metric";
+                params.cluster = "no";
+                params.bbox = bbox;
+                if (properties.apikey) {
+                    params.APPID = properties.apikey;
+                }
+                return apprt_request(
+                    properties.url,
+                    {
+                        query: params,
+                        timeout: properties.timeout || 60000,
+                        handleAs: "json"
+                    }
+                )
+                    ;
+            }, this);
+
+            var dl = new DeferredList(requests);
+            return ct_when(dl,
+                function (responses) {
+                    this._cachingStore = new ComplexMemory({
+                        id: properties.id,
+                        idProperty: "id",
+                        metadata: properties.metadata
+                    });
+                    return d_array.forEach(responses, function (response) {
+                        if (response[0] === false) {
+                            this._logService.error({
+                                id: 0,
+                                message: "OWM request failed: " + response[1].response.status
+                            });
+                        } else {
+                            var list = response[1].list;
+                            return ct_when(this._transformItemsToGraphics(list), function (items) {
+                                d_array.forEach(items, function (item) {
+                                    try {
+                                        this._cachingStore.add(item);
+                                    } catch (e) {
+                                        // dublicate item
+                                    }
+                                }, this);
+                            }, this);
+                        }
+                    }, this);
+                },
+                this);
         },
         _transformItemsToGraphics: function (list) {
             var items = [];

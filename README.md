@@ -41,7 +41,15 @@ Configuration:
 "bundles" {
   "dn_openweathermapdatastore": {
     "OpenWeatherMapStoreFactory": {
-      "mapZoom": 5,
+      // bounding boxes + zoom value to get data
+      // from cities within the defined rectangle
+      // specified by the geographic coordinates
+      "bboxes": [
+        // whole world
+        "-180,90,180,-90,6",
+        // Germany
+        "6,55,15,47,8"
+      ]
       "apikey": "*your api key*"
     },
     "OWMInfoWidgetFactory": {
@@ -51,4 +59,3 @@ Configuration:
   ...
 }
 ```
-The mapZoom property must be a value between 1 and 8.

@@ -15,6 +15,10 @@
       "version": "^3.2.1"
     },
     {
+      "name": "notifier",
+      "version": "^3.2.1"
+    },
+    {
       "name": "d3",
       "version": "^3.2.1"
     },
@@ -80,7 +84,9 @@
         "omniSearchLabelAttr": "name",
         "omniSearchTypingDelay": 500,
         "url": "http://api.openweathermap.org/data/2.5/box/city",
-        "mapZoom": 6,
+        "bboxes": [
+          "-180,90,180,-90,5"
+        ],
         "metadata": {
           "title": "OpenWeatherMap DataStore",
           "name": "title",
@@ -463,6 +469,10 @@
         {
           "name": "_coordinateTransformer",
           "providing": "ct.api.coordinatetransformer.CoordinateTransformer"
+        },
+        {
+          "name": "_logService",
+          "providing": "ct.framework.api.LogService"
         }
       ]
     }
