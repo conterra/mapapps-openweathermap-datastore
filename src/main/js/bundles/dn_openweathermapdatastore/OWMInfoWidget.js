@@ -102,85 +102,91 @@ define([
             this._grid.set("content", grid);
 
             // c3 charts
-            var tempChart = c3.generate({
-                data: {
-                    columns: [
-                        ['data', content.temp]
-                    ],
-                    type: 'gauge'
-                },
-                tooltip: {show: false},
-                gauge: {
-                    label: {
-                        format: function (value, ratio) {
-                            return value;
-                        },
-                        show: true
+            if (content.temp !== undefined) {
+                var tempChart = c3.generate({
+                    data: {
+                        columns: [
+                            ['data', content.temp]
+                        ],
+                        type: 'gauge'
                     },
-                    min: -50,
-                    max: 50,
-                    units: 'Temperature [°C]'
-                },
-                color: {
-                    pattern: ['#0000FF', '#0080FF', '#00FFFF', '#00FF80', '#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
-                    threshold: {
-                        unit: '°C',
-                        values: [-50, -10, 0, 10, 20, 30, 40, 50]
-                    }
-                },
-                size: {height: 100, width: 160}
-            });
-            var humidityChart = c3.generate({
-                data: {
-                    columns: [
-                        ['data', content.humidity]
-                    ],
-                    type: 'gauge'
-                },
-                tooltip: {show: false},
-                gauge: {
-                    label: {
-                        format: function (value, ratio) {
-                            return value;
+                    tooltip: {show: false},
+                    gauge: {
+                        label: {
+                            format: function (value, ratio) {
+                                return value;
+                            },
+                            show: true
                         },
-                        show: true
+                        min: -50,
+                        max: 50,
+                        units: 'Temperature [°C]'
                     },
-                    units: 'Humidity [%]'
-                },
-                color: {
-                    pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
-                    threshold: {
-                        values: [30, 60, 90, 100]
-                    }
-                },
-                size: {height: 100, width: 160}
-            });
-            var cloudsChart = c3.generate({
-                data: {
-                    columns: [
-                        ['data', content.clouds]
-                    ],
-                    type: 'gauge'
-                },
-                tooltip: {show: false},
-                gauge: {
-                    label: {
-                        format: function (value, ratio) {
-                            return value;
+                    color: {
+                        pattern: ['#0000FF', '#0080FF', '#00FFFF', '#00FF80', '#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
+                        threshold: {
+                            unit: '°C',
+                            values: [-50, -10, 0, 10, 20, 30, 40, 50]
+                        }
+                    },
+                    size: {height: 100, width: 160}
+                });
+                domConstruct.place(tempChart.element, this._top, "last");
+            }
+            if (content.humidity !== undefined) {
+                var humidityChart = c3.generate({
+                    data: {
+                        columns: [
+                            ['data', content.humidity]
+                        ],
+                        type: 'gauge'
+                    },
+                    tooltip: {show: false},
+                    gauge: {
+                        label: {
+                            format: function (value, ratio) {
+                                return value;
+                            },
+                            show: true
                         },
-                        show: true
+                        units: 'Humidity [%]'
                     },
-                    units: 'Clouds [%]'
-                },
-                color: {
-                    pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
-                    threshold: {values: [30, 60, 90, 100]}
-                },
-                size: {height: 100, width: 160}
-            });
-            domConstruct.place(tempChart.element, this._top, "last");
-            domConstruct.place(humidityChart.element, this._top, "last");
-            domConstruct.place(cloudsChart.element, this._top, "last");
+                    color: {
+                        pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
+                        threshold: {
+                            values: [30, 60, 90, 100]
+                        }
+                    },
+                    size: {height: 100, width: 160}
+                });
+                domConstruct.place(humidityChart.element, this._top, "last");
+            }
+            if (content.clouds !== undefined) {
+                var cloudsChart = c3.generate({
+                    data: {
+                        columns: [
+                            ['data', content.clouds]
+                        ],
+                        type: 'gauge'
+                    },
+                    tooltip: {show: false},
+                    gauge: {
+                        label: {
+                            format: function (value, ratio) {
+                                return value;
+                            },
+                            show: true
+                        },
+                        units: 'Clouds [%]'
+                    },
+                    color: {
+                        pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
+                        threshold: {values: [30, 60, 90, 100]}
+                    },
+                    size: {height: 100, width: 160}
+                });
+                domConstruct.place(cloudsChart.element, this._top, "last");
+            }
 
             this._chart5Days = new Chart(this._chartNode5Days);
             this._chart16Days = new Chart(this._chartNode16Days);
@@ -474,7 +480,7 @@ define([
             var list;
             var params = {};
             params.units = "metric";
-            params.cnt="16";
+            params.cnt = "16";
             params.id = this.content.id;
             if (this.properties.apikey) {
                 params.APPID = this.properties.apikey;

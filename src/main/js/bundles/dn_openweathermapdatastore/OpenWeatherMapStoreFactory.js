@@ -113,8 +113,8 @@ define([
         _transformItemsToGraphics: function (list) {
             var items = [];
             d_array.forEach(list, function (obj) {
-                var lat = obj.coord.lat;
-                var lon = obj.coord.lon;
+                var lat = obj.coord.lat || obj.coord.Lat;
+                var lon = obj.coord.lon || obj.coord.Lon;
                 var geometry = ct_geometry.createPoint({
                     x: lon,
                     y: lat,
@@ -132,7 +132,7 @@ define([
                 attr.temp = obj.main.temp;
                 attr.pressure = obj.main.pressure;
                 attr.humidity = obj.main.humidity;
-                attr.clouds = obj.clouds.all;
+                attr.clouds = obj.clouds.all || obj.clouds.today;
                 attr.windspeed = obj.wind.speed;
                 attr.winddirection = obj.wind.deg;
                 var rain1;
@@ -160,7 +160,7 @@ define([
                 item.temp = obj.main.temp;
                 item.pressure = obj.main.pressure;
                 item.humidity = obj.main.humidity;
-                item.clouds = obj.clouds.all;
+                item.clouds = obj.clouds.all || obj.clouds.today;
                 item.windspeed = obj.wind.speed;
                 item.winddirection = obj.wind.deg;
                 item.rain1 = rain1;
