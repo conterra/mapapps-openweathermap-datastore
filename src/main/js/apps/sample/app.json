@@ -23,21 +23,11 @@
       "resultcenter@^3.2.1",
       "selection@^3.2.1",
       "banner@^3.2.1",
+      "custominfo@^3.2.1",
       "dn_openweathermapdatastore"
     ]
   },
   "bundles": {
-    "banner": {
-      "BannerWidget": {
-        "label": "Developer Network",
-        "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
-        "imagePosition": "above",
-        "link": "http://developernetwork.conterra.de"
-      }
-    },
-    "basemaptoggler": {
-      "enabled": true
-    },
     "dn_openweathermapdatastore": {
       "OpenWeatherMapStoreFactory": {
         // bounding boxes + zoom value to get data
@@ -54,6 +44,44 @@
       "OWMInfoWidgetFactory": {
         "apikey": "*your api key*"
       }
+    },
+    "banner": {
+      "BannerWidget": {
+        "label": "Developer Network",
+        "image": "https://www.conterra.de/~/media/conterra/images/site_logos/conterra-logo.ashx",
+        "imagePosition": "above",
+        "link": "http://developernetwork.conterra.de"
+      }
+    },
+    "custominfo": {
+      "CustomInfoToggleTool": [
+        {
+          "id": "customInfoTool",
+          "activateOnStartup": true,
+          "title": "Information",
+          "tooltip": "Information",
+          "iconClass": "icon-custom-info-info",
+          "toolClass": "ctInfo",
+          "togglable": true,
+          "widgetSettings": {
+            "content": "This app shows the functionality the OpenWeatherMap Datastore bundle which contains a store for OpenWeatherMap Data. It requests the OpenWeatherMap API that returns objects for each bigger city in the world. <br><br> To show the weather data, either click on the left button in the upper left corner to select all, search in the omnisearch for a city  or draw a box after clicking on the right button in the upper left corner. You'll see the results in the Result Center.",
+            "window": {
+              "title": "Information",
+              "marginBox": {
+                "w": 300,
+                "h": 200,
+                "l": 25,
+                "b": 70
+              },
+              "draggable": true,
+              "closable": true,
+              "modal": false,
+              "maximizable": false,
+              "resizable": false
+            }
+          }
+        }
+      ]
     },
     "map": {
       "MapModelFactory": {
@@ -166,8 +194,7 @@
             }
           ]
         }
-      },
-      "enabled": true
+      }
     },
     "omnisearch": {
       "OmniSearchFactory": {
@@ -178,8 +205,7 @@
           "selectFirstResultOnEnter": false,
           "autoSelect": false
         }
-      },
-      "enabled": true
+      }
     },
     "resultcenter": {
       "SearchStoreTool": [
@@ -189,8 +215,7 @@
           "storeId": "owm_datastore",
           "iconClass": "icon-cog"
         }
-      ],
-      "enabled": true
+      ]
     },
     "selection": {
       "SelectionTool": [
@@ -200,23 +225,7 @@
           "title": "Select OpenWeatherMap Data",
           "iconClass": "selectionIconExtent"
         }
-      ],
-      "enabled": true
-    },
-    "splashscreen": {
-      "enabled": true
-    },
-    "templatelayout": {
-      "enabled": true
-    },
-    "templates": {
-      "enabled": true
-    },
-    "themes": {
-      "enabled": true
-    },
-    "toolrules": {
-      "enabled": true
+      ]
     },
     "toolset": {
       "ToolsetManager": {
@@ -241,14 +250,7 @@
             ]
           }
         ]
-      },
-      "enabled": true
-    },
-    "windowmanager": {
-      "enabled": true
-    },
-    "wizard": {
-      "enabled": true
+      }
     }
   }
 }
