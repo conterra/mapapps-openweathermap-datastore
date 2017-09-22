@@ -15,7 +15,7 @@ The bundle also contains a special content viewer with charts for 5 and 16 days 
 
 Sample App
 ------------------
-http://www.mapapps.de/mapapps/resources/apps/downloads_openweathermap/index.html
+https://demos.conterra.de/mapapps/resources/apps/downloads_openweathermap/index.html
 
 Installation Guide
 ------------------
